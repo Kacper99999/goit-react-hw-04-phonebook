@@ -25,29 +25,27 @@ const handleChange = (e) => {
   };
 
 
-
 const handleSubmit = (e) => {
-e.preventDefault();
-const { name, number, contacts } = state;
-const contactExists = contacts.some(con => con.name === name);
+  e.preventDefault();
+  const { name, number, contacts } = state;
+  const contactExists = contacts.some(con => con.name === name);
 
-if (contactExists) {
-  alert("Kontakt o takiej nazwie już istnieje!");
-  return;
-}
+  if (contactExists) {
+    alert("Kontakt o takiej nazwie już istnieje!");
+    return;
+  }
 
-const newContact = {
-  id: nanoid(),
-  name: name,
-  number: number
-}
+  const newContact = {
+    id: nanoid(),
+    name: name,
+    number: number
+  }
 
-setState((prevState) => ({
-  ...prevState,
-  contacts: [...prevState.contacts, newContact]
-}));
+  setState((prevState) => ({
+    ...prevState,
+    contacts: [...prevState.contacts, newContact]
+  }));
 };
-
 
 
 const searchContact = (e) => {
@@ -84,13 +82,13 @@ return (
     />
     <h2>Contacts</h2>
     <Filter
-    search={searchContact}
+      search={searchContact}
     />
     <ContactList
-    contacts={contacts}
-    filter={filter}
-    filteredContacts={filteredContacts}
-    removeContact={removeContact}
+      contacts={contacts}
+      filter={filter}
+      filteredContacts={filteredContacts}
+      removeContact={removeContact}
     />
 
   </>

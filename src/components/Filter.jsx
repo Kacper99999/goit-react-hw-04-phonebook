@@ -14,7 +14,7 @@ function Filter({ search }){
 }
 
 Filter.propTypes = {
-    search : PropTypes.func.isRequired
+    search : PropTypes.func
 }
 
 export default Filter;

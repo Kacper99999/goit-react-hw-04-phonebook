@@ -33,9 +33,9 @@ function Contacts ({handleChange, handleChange2, handleSubmit }){
 }
 
 Contacts.propTypes = {
-  handleChange: PropTypes.func.isRequired,
-  handleChange2: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired
+  handleChange: PropTypes.func,
+  handleChange2: PropTypes.func,
+  handleSubmit: PropTypes.func
 }
 
 export default Contacts;
