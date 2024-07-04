@@ -1,4 +1,4 @@
-import React ,{useState} from 'react';
+import React ,{useState, useEffect, useRef} from 'react';
 import { nanoid } from 'nanoid';
 import Contacts from '/src/components/Contacts';
 import Filter from '/src/components/Filter'
@@ -70,6 +70,28 @@ const removeContact = (idToRemove) => {
     const filteredContacts = contacts.filter((con) =>
       con.name.toLowerCase().startsWith(filter)
     );
+
+    const isMounted = useRef(false);
+    
+    useEffect(()=>{
+      const zmienna = localStorage.getItem("contacts")
+      if(zmienna){
+        setState((preState) =>({
+          ...preState,
+          contacts:JSON.parse(zmienna)
+        }))
+      }
+      },[])
+      
+    
+    useEffect(()=>{
+      if(isMounted.current){
+        localStorage.setItem("contacts", JSON.stringify(state.contacts));
+      }
+      else{
+        isMounted.current = true;
+      }
+    },[state.contacts]);
 
 return (
   
